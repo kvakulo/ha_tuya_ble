@@ -315,6 +315,7 @@ class TuyaBLEConfigFlow(ConfigFlow, domain=DOMAIN):
             _LOGGER.warning("current addresses: %s", current_addresses)
             for discovery in async_discovered_service_info(self.hass):
                 _LOGGER.warning("discovery: %s", discovery)
+                _LOGGER.warning("address: %s, service_data: %s", discovery.address, discovery.service_data)
                 if (
                     discovery.address in current_addresses
                     or discovery.address in self._discovered_devices
