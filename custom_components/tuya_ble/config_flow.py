@@ -319,8 +319,8 @@ class TuyaBLEConfigFlow(ConfigFlow, domain=DOMAIN):
                 if (
                     discovery.address in current_addresses
                     or discovery.address in self._discovered_devices
-                    or discovery.service_data is None
-                    or not SERVICE_UUID in discovery.service_data.keys()
+                    # or discovery.service_data is None
+                    # or not SERVICE_UUID in discovery.service_data.keys()
                 ):
                     _LOGGER.warning("not added")
                     continue
