@@ -145,7 +145,7 @@ class HASSTuyaBLEDeviceManager(AbstaractTuyaBLEDeviceManager):
         )
 
         if self._is_login_success(response):
-            _LOGGER.debug("Successful login for %s", data[CONF_USERNAME])
+            _LOGGER.warning("Successful login for %s", data[CONF_USERNAME])
             if add_to_cache:
                 auth_type = data[CONF_AUTH_TYPE]
                 if type(auth_type) is AuthType:
@@ -278,7 +278,7 @@ class HASSTuyaBLEDeviceManager(AbstaractTuyaBLEDeviceManager):
                 credentials.get(CONF_PRODUCT_MODEL, ""),
                 credentials.get(CONF_PRODUCT_NAME, ""),
             )
-            _LOGGER.debug("Retrieved: %s", result)
+            _LOGGER.warning("Retrieved: %s", result)
             if save_data:
                 if item:
                     self._data.update(item.login)

@@ -309,6 +309,7 @@ devices_database: dict[str, TuyaBLECategoryInfo] = {
 def get_product_info_by_ids(
     category: str, product_id: str
 ) -> TuyaBLEProductInfo | None:
+    _LOGGER.warning("Category: %s, Product: %s", category, product_id)
     category_info = devices_database.get(category)
     if category_info is not None:
         product_info = category_info.products.get(product_id)
