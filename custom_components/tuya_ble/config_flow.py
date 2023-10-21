@@ -310,15 +310,20 @@ class TuyaBLEConfigFlow(ConfigFlow, domain=DOMAIN):
         if discovery := self._discovery_info:
             self._discovered_devices[discovery.address] = discovery
         else:
+            _LOGGER.warning("discover devices?")
             current_addresses = self._async_current_ids()
+            _LOGGER.warning("current addresses: %s", current_addresses)
             for discovery in async_discovered_service_info(self.hass):
+                _LOGGER.warning("discovery: %s", discovery)
                 if (
                     discovery.address in current_addresses
                     or discovery.address in self._discovered_devices
                     or discovery.service_data is None
                     or not SERVICE_UUID in discovery.service_data.keys()
                 ):
+                    _LOGGER.warning("not added")
                     continue
+                _LOGGER.warning("added")
                 self._discovered_devices[discovery.address] = discovery
 
         if not self._discovered_devices:
